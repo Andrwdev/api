@@ -19,8 +19,10 @@ export class MapperResponse {
     longitud: string | number;
     precio_venta: number;
     sector: string;
-    patios: string;
-    imagenes: Image[]
+    patios: string | number;
+    imagenes: Image[];
+    totalpaginas?: number;
+    totalinmuebles?: number;
 
     constructor(payload: IEstate) {
         this.consecutivo = payload?.consecutivo;
@@ -42,6 +44,9 @@ export class MapperResponse {
         this.precio_venta = payload?.precio_venta;
         this.sector = payload?.sector;
         this.patios = payload?.patios;
-        this.imagenes = payload?.imagenes.map(image => ({fotourl: image.fotourl}));
+        this.totalpaginas = payload?.totalpaginas;
+        this.totalinmuebles = payload?.totalinmuebles;
+        this.imagenes =
+            payload?.imagenes?.map((image) => ({ fotourl: image.fotourl })) ?? [];
     }
 }

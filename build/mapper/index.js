@@ -22,6 +22,8 @@ class MapperResponse {
     sector;
     patios;
     imagenes;
+    totalpaginas;
+    totalinmuebles;
     constructor(payload) {
         this.consecutivo = payload?.consecutivo;
         this.clase = payload?.clase;
@@ -42,7 +44,10 @@ class MapperResponse {
         this.precio_venta = payload?.precio_venta;
         this.sector = payload?.sector;
         this.patios = payload?.patios;
-        this.imagenes = payload?.imagenes.map(image => ({ fotourl: image.fotourl }));
+        this.totalpaginas = payload?.totalpaginas;
+        this.totalinmuebles = payload?.totalinmuebles;
+        this.imagenes =
+            payload?.imagenes?.map((image) => ({ fotourl: image.fotourl })) ?? [];
     }
 }
 exports.MapperResponse = MapperResponse;
