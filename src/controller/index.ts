@@ -3,10 +3,10 @@ import { getEstates } from "../service";
 
 const router = Router();
 
-router.get('/estates', async (req: Request, res: Response) => {
+router.get("/estates", async (req: Request, res: Response) => {
     const resp = await getEstates(req.query);
 
-    res.send(resp.data).status(resp.code);
-})
+    res.status(resp.code).send(resp.data);
+});
 
 export default router;
